@@ -1,65 +1,52 @@
 package train2;
 
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.*;
-import javax.swing.border.Border;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
-public class Main implements ActionListener{
+
+public class Main extends JFrame{
+	JButton button;
+	Main() {
+		
+		JLabel label = new JLabel();
+		ImageIcon img = new ImageIcon("snow.png");
+		JTextField field = new JTextField();
+		
+		label.setIcon(img);
+		label.setBackground(new Color(0x123456));
+		label.setOpaque(true);
+		
+		button = new JButton();
+		button.setText("paste");
+		button.setBounds(100, 200, 200, 40);
+		button.setFocusable(false);
+		
+		field.setBounds(100,100,200,50);
+		
+		this.setSize(400, 400);
+		this.setResizable(false);
+		this.setLayout(null);
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.getContentPane().setBackground(Color.cyan);
+		this.setVisible(true);
+		//this.add(label);
+		this.add(button);
+		this.add(field);
+		
+	}
 	
 	public static void main(String[] args) {
 		
-		ImageIcon image = new ImageIcon("snow.png");
-		Border border = BorderFactory.createLineBorder(Color.BLUE, 6);
-	    JButton button = new JButton();
-		JTextField field = new JTextField();
-	    
-	    JLabel label = new JLabel();
-		label.setText("Snowy!");
-		label.setForeground(Color.black);
-		label.setFont(new Font("Tahoma",Font.BOLD,40));
-	    label.setIcon(image);
-	    label.setVerticalTextPosition(JLabel.TOP);
-	    label.setHorizontalTextPosition(JLabel.CENTER);
-	    label.setVerticalAlignment(JLabel.TOP);
-	    label.setHorizontalAlignment(JLabel.CENTER);
-	    label.setBorder(border);
-	
-	    button.setBounds(100, 200, 200, 50);
-	    button.setText("Click!");
-	    button.setFocusable(false);
-	    button.setBackground(Color.LIGHT_GRAY);
-	    //button.addActionListener();
-	    
-	
-	    field.setBounds(100, 200, 200, 50);
-	    field.setHorizontalAlignment(JLabel.CENTER);
-		field.setForeground(Color.black);
-	    JFrame frame = new JFrame();
+		new Main();
 		
-		frame.setTitle("Xmas-WishList");
-		frame.setBackground(new Color(0x123456));
-		frame.setVisible(true);
-		frame.setResizable(false);
-		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
-		frame.add(label);
-		frame.pack();	
-		frame.add(button);
-        frame.add(field);
-		
-	
-	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		
-		
-	}
-
+		}
+	
 }
 
 
