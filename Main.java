@@ -2,6 +2,8 @@ package train2;
 
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -11,14 +13,16 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 
-public class Main extends JFrame{
-	
+public class Main extends JFrame implements ActionListener{
+	JButton button;
+	JTextField field;
+	JTextArea area;
 	Main() {
-		JButton button = new JButton();
+		button = new JButton();
 		JLabel label = new JLabel();
 		ImageIcon img = new ImageIcon("snow.png");
-		JTextField field = new JTextField();
-		JTextArea area = new JTextArea();
+		field = new JTextField();
+		area = new JTextArea();
 		
 		label.setIcon(img);
 		label.setBackground(new Color(0x123456));
@@ -27,12 +31,14 @@ public class Main extends JFrame{
 		label.add(button);
 		label.add(area);
 		
+		area.setVisible(false);
 		area.setBounds(100,250,200,100);
 		field.setBounds(100,100,200,50);
 		
 		button.setText("paste");
 		button.setBounds(100, 200, 200, 40);
 		button.setFocusable(false);
+		button.addActionListener(this);
 		
 		this.setTitle("list");
 		this.setSize(400, 400);
@@ -49,6 +55,15 @@ public class Main extends JFrame{
 		
 
 		}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+	if (e.getSource() == button) {
+		area.setVisible(true);
+		area.append(field.getText()); 
+	}
+	
+	}
 	
 }
 
