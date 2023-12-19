@@ -71,7 +71,7 @@ public class Main extends JFrame implements ActionListener{
 			while(scan.hasNextLine()) {
 				area.setText(scan.nextLine());
 			}
-			FileWriter write = new FileWriter("e:/eclipse/eclipse workspace/train2/list.txt");
+			FileWriter write = new FileWriter("e:/eclipse/eclipse workspace/train2/list.txt",true);
 			
 			write.write(field.getText());
 			write.close();
