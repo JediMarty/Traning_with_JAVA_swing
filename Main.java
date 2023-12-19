@@ -4,6 +4,10 @@ package train2;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Scanner;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -18,6 +22,7 @@ public class Main extends JFrame implements ActionListener{
 	JTextField field;
 	JTextArea area;
 	Main() {
+		
 		button = new JButton();
 		JLabel label = new JLabel();
 		ImageIcon img = new ImageIcon("snow.png");
@@ -60,12 +65,28 @@ public class Main extends JFrame implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == button) {
 		area.setVisible(true);
-		area.append(field.getText()); 
+		try {
+			File file = new File("e:/eclipse/eclipse workspace/train2/list.txt");
+			Scanner scan = new Scanner(file);
+			while(scan.hasNextLine()) {
+				area.setText(scan.nextLine());
+			}
+			FileWriter write = new FileWriter("e:/eclipse/eclipse workspace/train2/list.txt");
+			
+			write.write(field.getText());
+			write.close();
+		} catch (IOException e1) {
+			
+			e1.printStackTrace();
+		}
+		
 	}
 	
 	}
+	
 	
 }
+
 
 
 
