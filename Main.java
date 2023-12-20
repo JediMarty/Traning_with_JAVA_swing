@@ -36,16 +36,17 @@ public class Main extends JFrame implements ActionListener{
 		label.add(button);
 		label.add(area);
 		
-		area.setVisible(false);
+		
 		area.setBounds(100,250,200,100);
+		
 		field.setBounds(100,100,200,50);
 		
-		button.setText("paste");
+		button.setText("paste/refresh");
 		button.setBounds(100, 200, 200, 40);
 		button.setFocusable(false);
 		button.addActionListener(this);
 		
-		this.setTitle("list");
+		this.setTitle("Xmas-list");
 		this.setSize(400, 400);
 		this.setResizable(false);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -63,18 +64,25 @@ public class Main extends JFrame implements ActionListener{
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-	if (e.getSource() == button) {
-		area.setVisible(true);
+	
+		if (e.getSource() == button) {
+		
 		try {
 			File file = new File("e:/eclipse/eclipse workspace/train2/list.txt");
-			Scanner scan = new Scanner(file);
-			while(scan.hasNextLine()) {
-				area.setText(scan.nextLine());
+			
+			Scanner reader = new Scanner(file);
+			while(reader.hasNextLine()) {
+				//area.setText(reader.nextLine());
+				String str = reader.nextLine();
+				System.out.println(str);
 			}
+			
 			FileWriter write = new FileWriter("e:/eclipse/eclipse workspace/train2/list.txt",true);
 			
 			write.write(field.getText());
+			write.write("\n");
 			write.close();
+			
 		} catch (IOException e1) {
 			
 			e1.printStackTrace();
@@ -86,7 +94,6 @@ public class Main extends JFrame implements ActionListener{
 	
 	
 }
-
 
 
 
